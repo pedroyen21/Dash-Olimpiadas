@@ -1,7 +1,13 @@
+
 import plotly.express as px
 import numpy as np
+import pandas as pd
+
+dados_df = pd.read_excel(r"dados.xlsx")
+
+for cells in dados_df.values:
+    print(cells[1])
+##Posição	Atleta	Pais	Modalidade	Anos	Jogos	Sexo	Ouro	Prata	Bronze	Total
 
 
-nx = np.arange(start = 0, stop=100,step=.25)
-grafico= px.line(x= nx, y= -np.cos(nx), height=400)
-grafico.show()
+
