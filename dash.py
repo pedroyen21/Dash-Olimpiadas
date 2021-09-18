@@ -17,10 +17,11 @@ for i in range(len(dados_df.values)):
         'bronze' : dados_df['Bronze'][i]
     }
     atletas[dados_df['Atleta'][i].replace('\xa0', '')]= medalhas
-print(atletas.keys())
- 
-#fig = px.bar(atletas, x=atletas.keys(), y=["atletas['ouro']", "atletas['prata']", "atletas['bronze']"], title="Wide-Form Input")
-#fig.show()
+camelo = px.data.medals_wide()
+print(len(atletas))
+print(medalhas['ouro'])
+fig = px.bar(camelo, x=atletas.keys() ,y="ouro", title="Wide-Form Input")
+fig.show()
     
 
 
