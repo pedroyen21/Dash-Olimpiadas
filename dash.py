@@ -8,9 +8,7 @@ dados_df = pd.read_excel("dados.xlsx") #leitura dos dados
 medalhas = {}
 atletas = {'nome': [], 'ouro':[],'prata':[],'bronze':[]}
 
-for i in range(len(dados_df.values)):    
-    
-  
+for i in range(len(dados_df.values)):   
     atletas['nome'].append(dados_df['Atleta'][i].replace('\xa0', ''))
     atletas['ouro'].append(dados_df['Ouro'][i])
     atletas['prata'].append(dados_df['Prata'][i])
@@ -23,8 +21,7 @@ fig = px.bar(
         x= 'nome',
         y=['ouro','prata','bronze'], 
         color_discrete_map={'ouro':'gold','prata':'silver', 'bronze':'#eb7e24'}, 
-        labels={'value':'Quantidades de medalhas', 'variable':'Medalhas', 'nome':'Atletas'},
-    
+        labels={'value':'Quantidades de medalhas', 'variable':'Medalhas', 'nome':'Atletas'}    
         )
 fig.show()
   
