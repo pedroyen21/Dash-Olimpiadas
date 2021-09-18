@@ -6,23 +6,28 @@ dados_df = pd.read_excel("dados.xlsx") #leitura dos dados
 ##Posição	Atleta	Pais	Modalidade	Anos	Jogos	Sexo	Ouro	Prata	Bronze	Total
 
 medalhas = {}
-atletas = {}
+atletas = {'nome': [], 'ouro':[],'prata':[],'bronze':[]}
 
-for i in range(len(dados_df.values)): 
+for i in range(len(dados_df.values)):    
     
+  
+    atletas['nome'].append(dados_df['Atleta'][i].replace('\xa0', ''))
+    atletas['ouro'].append(dados_df['Ouro'][i])
+    atletas['prata'].append(dados_df['Prata'][i])
+    atletas['bronze'].append(dados_df['Bronze'][i])
+
+
+fig = px.bar(
+        atletas,
+        title="Olimpíadas - Medalhas por atleta",  
+        x= 'nome',
+        y=['ouro','prata','bronze'], 
+        color_discrete_map={'ouro':'gold','prata':'silver', 'bronze':'#eb7e24'}, 
+        labels={'value':'Quantidades de medalhas', 'variable':'Medalhas', 'nome':'Atletas'},
     
-    medalhas = {       
-        'ouro' : dados_df['Ouro'][i],
-        'prata' : dados_df['Prata'][i],
-        'bronze' : dados_df['Bronze'][i]
-    }
-    atletas[dados_df['Atleta'][i].replace('\xa0', '')]= medalhas
-camelo = px.data.medals_wide()
-print(len(atletas))
-print(medalhas['ouro'])
-fig = px.bar(camelo, x=atletas.keys() ,y="ouro", title="Wide-Form Input")
+        )
 fig.show()
-    
+  
 
 
 
